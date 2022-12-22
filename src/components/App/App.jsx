@@ -40,18 +40,9 @@ export const App = () => {
 
   const getVisibleContacts = () => {
     return contacts.filter(contact => {
-      return contact.name.includes(filter.toLowerCase());
+      return contact.name.toLowerCase().includes(filter.toLowerCase());
     });
   };
-
-  useEffect(() => {
-    const localContacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(localContacts);
-
-    if (parsedContacts) {
-      setContacts(parsedContacts);
-    }
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
